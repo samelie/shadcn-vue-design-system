@@ -1,0 +1,19 @@
+{
+   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+       "~/*": [
+                "./src/*"
+            ],
+            "~/lib/utils": [
+                "./src/lib/index.ts"
+            ],
+            "~/components": [
+                "./src/components"
+            ],
+            "~/composables": [
+                "./src/composables"
+            ]
+    }
+  }
+}
