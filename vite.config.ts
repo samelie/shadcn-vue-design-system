@@ -15,4 +15,5 @@ export default mergeConfig(
                 "@": path.resolve(__dirname, "./src"),
             },
         },
-    }));
+    }),
+);
