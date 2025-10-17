@@ -1,0 +1,37 @@
+# Development files
+example-app/
+node_modules/
+.DS_Store
+
+# Config files
+.eslintrc*
+.prettierrc*
+tsconfig.*.json
+vite.config.ts
+knip.config.ts
+vitest.config.ts
+
+# Build artifacts
+dist/
+.vite/
+
+# Documentation
+docs/
+
+# Git
+.git/
+.github/
+
+# Testing
+coverage/
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
