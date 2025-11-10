@@ -14,8 +14,8 @@
  *    - See css/main.css
  */
 
-/* ACTIVE: Design System Integration */
-@import "./css/my-styles.css";
+/* INACTIVE: Design System Integration (external @adddog/design-tokens) */
+/* @import "./css/my-styles.css"; */
 
-/* INACTIVE: Standalone Themes (uncomment to use instead) */
-/* @import "./css/main.css"; */
+/* ACTIVE: Standalone Themes with sizing and touch variants */
+@import "./css/main.css";

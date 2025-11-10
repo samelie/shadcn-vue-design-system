@@ -69,7 +69,7 @@
   },
   "peerDependenciesMeta": {
     "@adddog/design-tokens": {
-      "optional": false
+      "optional": true
     },
     "tailwindcss": {
       "optional": true

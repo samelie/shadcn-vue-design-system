@@ -2,7 +2,17 @@
 
 @import "tw-animate-css";
 
+/* Import sizing configuration - breakpoints, containers, spacing */
+@import "./sizing.css";
+
 @custom-variant dark (&:is(.dark *));
+
+/* Touch device detection variants */
+@custom-variant touch (@media (pointer: coarse));
+
+@custom-variant not-touch (@media not (pointer: coarse));
+
+@custom-variant any-touch (@media (any-pointer: coarse));
 
 @import "./themes.css";
 
