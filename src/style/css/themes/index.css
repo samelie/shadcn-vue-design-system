@@ -1,0 +1,19 @@
+/**
+ * Theme Variants Index
+ *
+ * Imports all available theme variants.
+ * Each theme can be applied via class: .theme-stone, .theme-zinc, etc.
+ *
+ * These themes override the base semantic tokens defined in tokens/semantic.css
+ */
+
+/* Individual theme variants - can split into separate files if needed */
+@import "./stone.css";
+
+/* TODO: Split remaining themes from themes.css into individual files:
+ * - zinc.css
+ * - neutral.css
+ * - gray.css
+ * - slate.css
+ * - scaled.css (modifier theme)
+ */
