@@ -11,6 +11,9 @@
             "~/components": [
                 "./src/components"
             ],
+            "~/other": [
+                "./src/other"
+            ],
             "~/composables": [
                 "./src/composables"
             ]

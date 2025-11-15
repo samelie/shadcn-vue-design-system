@@ -20,6 +20,7 @@
       "types": "./src/index.ts",
       "import": "./src/index.ts"
     },
+    "./other/*": "./src/other/*",
     "./components/*": "./src/components/*",
     "./lib/*": "./src/lib/*",
     "./styles.css": "./src/style/styles.css",
