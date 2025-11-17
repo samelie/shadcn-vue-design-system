@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from 'vue'
 import { ChevronUp } from 'lucide-vue-next'
+import { cn } from '../../lib/utils'
 import Drawer from '../../components/ui/drawer/Drawer.vue'
 import DrawerContent from '../../components/ui/drawer/DrawerContent.vue'
 import DrawerHeader from '../../components/ui/drawer/DrawerHeader.vue'
@@ -82,6 +83,12 @@ interface AppDrawerProps {
   tabHeight?: string
   tabLabel?: string
   showTabIcon?: boolean
+
+  // Width control (CSS value like '100%', '400px', '50vw')
+  width?: string
+
+  // Horizontal positioning for bottom/top drawers
+  side?: 'left' | 'center' | 'right'
 }
 
 const props = withDefaults(defineProps<AppDrawerProps>(), {
@@ -109,6 +116,8 @@ const props = withDefaults(defineProps<AppDrawerProps>(), {
   tabHeight: '50px',
   tabLabel: 'View Details',
   showTabIcon: true,
+
+  width: '100%',
 })
 
 const emit = defineEmits<{
@@ -131,6 +140,28 @@ const contentMaxHeight = computed(() => {
 
   console.log('[AppDrawer] Content max-height:', availableHeight, 'for snap:', activeSnap.value)
   return availableHeight
+})
+
+// Compute drawer width style
+const drawerStyle = computed(() => ({
+  width: props.width
+}))
+
+// Compute drawer positioning class using Tailwind justify-self
+const drawerClass = computed(() => {
+  const classes = ['drawer-with-tab', 'h-full', 'max-h-[97%]']
+
+  // Add justify-self for horizontal positioning (bottom/top drawers only)
+  if (props.side && (props.direction === 'bottom' || props.direction === 'top')) {
+    const justifyMap = {
+      left: 'justify-self-start',
+      center: 'justify-self-center',
+      right: 'justify-self-end'
+    }
+    classes.push(justifyMap[props.side])
+  }
+
+  return cn(...classes)
 })
 
 onMounted(() => {
@@ -183,7 +214,7 @@ defineExpose({
   <Drawer v-model:open="isOpen" :snap-points="snapPoints" v-model:active-snap-point="activeSnap" :modal="modal"
     :should-scale-background="shouldScaleBackground" :direction="direction" :dismissible="false" :fade-from-index="1"
     :scroll-lock-timeout="scrollLockTimeout" :handle-only="handleOnly">
-    <DrawerContent class="drawer-with-tab h-full max-h-[97%]" :aria-describedby="description ? undefined : 'undefined'">
+    <DrawerContent :class="drawerClass" :style="drawerStyle" :aria-describedby="description ? undefined : 'undefined'">
       <!-- Drag handle bar (automatically positioned by vaul) -->
 
       <!-- Always include title for accessibility (visually hidden when collapsed) -->
