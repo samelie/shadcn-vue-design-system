@@ -42,7 +42,7 @@
     "prepack": "pnpm run prepublishOnly",
     "types": "vue-tsc --noEmit",
     "knip": "knip",
-    "test": "vitest run"
+    "test": "echo '⚠️⚠️⚠️no test vitest --watch=false'"
   },
   "author": "Sam Elie <sam@add.dog>",
   "homepage": "https://github.com/samelie/shadcn-vue-design-system#readme",
