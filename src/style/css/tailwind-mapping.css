@@ -36,6 +36,18 @@
     --color-warning: var(--warning);
     --color-warning-foreground: var(--warning-foreground);
 
+    /* Chip colors */
+    --color-chip: var(--chip);
+    --color-chip-foreground: var(--chip-foreground);
+    --color-chip-success: var(--chip-success);
+    --color-chip-success-foreground: var(--chip-success-foreground);
+    --color-chip-warning: var(--chip-warning);
+    --color-chip-warning-foreground: var(--chip-warning-foreground);
+    --color-chip-destructive: var(--chip-destructive);
+    --color-chip-destructive-foreground: var(--chip-destructive-foreground);
+    --color-chip-info: var(--chip-info);
+    --color-chip-info-foreground: var(--chip-info-foreground);
+
     /* Border and input colors */
     --color-border: var(--border);
     --color-input: var(--input);
