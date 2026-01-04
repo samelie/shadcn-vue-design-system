@@ -9,3 +9,4 @@ export * from "./ui/popover";
 export * from "./ui/switch";
 export * from "./ui/table";
 export * from "./ui/tags-input";
+export * from "./ui/toggle-group";
