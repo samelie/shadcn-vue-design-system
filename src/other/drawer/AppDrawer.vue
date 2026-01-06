@@ -128,7 +128,7 @@ const emit = defineEmits<{
 
 // State: drawer is always open, just at different snap heights
 const isOpen = ref(true)
-const activeSnap = ref(props.defaultSnapPoint)
+const activeSnap = ref<number | undefined>(props.defaultSnapPoint)
 
 // Compute available height for scrollable content based on current snap position
 // This ensures content can scroll when drawer is partially visible
@@ -136,9 +136,10 @@ const contentMaxHeight = computed(() => {
   // activeSnap is the % of screen the drawer occupies
   // We need to subtract space for: handle (~20px) + header + padding + tab area
   const CHROME_HEIGHT = 120 // Approximate height of handle + header + padding
-  const availableHeight = `calc(${activeSnap.value * 100}vh - ${CHROME_HEIGHT}px)`
+  const snap = activeSnap.value ?? props.defaultSnapPoint
+  const availableHeight = `calc(${snap * 100}vh - ${CHROME_HEIGHT}px)`
 
-  console.log('[AppDrawer] Content max-height:', availableHeight, 'for snap:', activeSnap.value)
+  console.log('[AppDrawer] Content max-height:', availableHeight, 'for snap:', snap)
   return availableHeight
 })
 
@@ -164,24 +165,35 @@ const drawerClass = computed(() => {
   return cn(...classes)
 })
 
+// Safe computed for checking if expanded beyond second snap point
+const isExpanded = computed(() => {
+  const snap = activeSnap.value ?? props.defaultSnapPoint
+  const secondSnap = props.snapPoints[1] ?? props.defaultSnapPoint
+  return snap > secondSnap
+})
+
 onMounted(() => {
   isOpen.value = true
-  console.log('[AppDrawer] Mounted at snap:', activeSnap.value, `(${activeSnap.value * 100}% of screen height)`)
+  const snap = activeSnap.value ?? props.defaultSnapPoint
+  console.log('[AppDrawer] Mounted at snap:', snap, `(${snap * 100}% of screen height)`)
 })
 
 // Watch for snap point changes and notify parent
 // Note: activeSnap is bound via v-model, so vaul-vue updates it automatically
 watch(activeSnap, (newSnap) => {
-  console.log('[AppDrawer] Snapped to:', newSnap, `(${newSnap * 100}% of screen height)`)
-  emit('snap-change', newSnap)
+  if (newSnap !== undefined) {
+    console.log('[AppDrawer] Snapped to:', newSnap, `(${newSnap * 100}% of screen height)`)
+    emit('snap-change', newSnap)
+  }
 })
 
 // Debug state
 watch([isOpen, activeSnap], ([open, snap]) => {
+  const snapVal = snap ?? props.defaultSnapPoint
   console.log('[AppDrawer] State:', {
     open,
-    snap,
-    snapPercentage: `${snap * 100}%`,
+    snap: snapVal,
+    snapPercentage: `${snapVal * 100}%`,
     snapPoints: props.snapPoints.map(s => `${s * 100}%`),
     contentMaxHeight: contentMaxHeight.value
   })
@@ -191,22 +203,25 @@ watch([isOpen, activeSnap], ([open, snap]) => {
 defineExpose({
   /** Jump to specific snap point by index */
   snapTo: (index: number) => {
-    if (index >= 0 && index < props.snapPoints.length) {
-      activeSnap.value = props.snapPoints[index]
+    const snapPoint = props.snapPoints[index]
+    if (index >= 0 && index < props.snapPoints.length && snapPoint !== undefined) {
+      activeSnap.value = snapPoint
     }
   },
   /** Expand to largest snap point (usually full screen) */
   expand: () => {
-    activeSnap.value = props.snapPoints[props.snapPoints.length - 1]
+    const snapPoint = props.snapPoints[props.snapPoints.length - 1]
+    if (snapPoint !== undefined) activeSnap.value = snapPoint
   },
   /** Collapse to smallest snap point (usually peek/tab view) */
   collapse: () => {
-    activeSnap.value = props.snapPoints[0]
+    const snapPoint = props.snapPoints[0]
+    if (snapPoint !== undefined) activeSnap.value = snapPoint
   },
   /** Get current snap point value */
-  getCurrentSnap: () => activeSnap.value,
+  getCurrentSnap: () => activeSnap.value ?? props.defaultSnapPoint,
   /** Get current snap point as percentage string */
-  getCurrentSnapPercentage: () => `${activeSnap.value * 100}%`,
+  getCurrentSnapPercentage: () => `${(activeSnap.value ?? props.defaultSnapPoint) * 100}%`,
 })
 </script>
 
@@ -242,7 +257,7 @@ defineExpose({
       <template v-if="activeSnap !== snapPoints[0]">
         <!-- Scrollable content area with dynamic height based on snap position -->
         <div class="flex-1 overflow-y-auto px-4 pb-4" :style="{ maxHeight: contentMaxHeight }">
-          <slot :snap="activeSnap" :is-expanded="activeSnap > snapPoints[1]" />
+          <slot :snap="activeSnap ?? defaultSnapPoint" :is-expanded="isExpanded" />
         </div>
 
         <!-- Optional footer -->
