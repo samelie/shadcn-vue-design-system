@@ -19,7 +19,7 @@ interface Props {
   buttonClass?: HTMLAttributes["class"]
 }
 
-const props = withDefaults(defineProps<Props>(), {
+withDefaults(defineProps<Props>(), {
   variant: "ghost",
   size: "icon",
   side: "top",
