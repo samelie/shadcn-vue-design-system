@@ -227,7 +227,7 @@ defineExpose({
 
 <template>
   <Drawer v-model:open="isOpen" :snap-points="snapPoints" v-model:active-snap-point="activeSnap" :modal="modal"
-    :should-scale-background="shouldScaleBackground" :direction="direction" :dismissible="false" :fade-from-index="1"
+    :should-scale-background="shouldScaleBackground" :direction="direction" :dismissible="false"
     :scroll-lock-timeout="scrollLockTimeout" :handle-only="handleOnly">
     <DrawerContent :class="drawerClass" :style="drawerStyle" :aria-describedby="description ? undefined : 'undefined'">
       <!-- Drag handle bar (automatically positioned by vaul) -->

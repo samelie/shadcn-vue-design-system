@@ -65,18 +65,18 @@
  */
 
 @theme {
-  /* ========================================
+    /* ========================================
    * CUSTOM EXTENSIONS
    * ======================================== */
 
-  /* Extended container query breakpoints */
-  --container-8xl: 96rem;   /* 1536px - @8xl: prefix */
-  --container-9xl: 120rem;  /* 1920px - @9xl: prefix */
+    /* Extended container query breakpoints */
+    --container-8xl: 96rem; /* 1536px - @8xl: prefix */
+    --container-9xl: 120rem; /* 1920px - @9xl: prefix */
 
-  /* Extended viewport breakpoints */
-  --breakpoint-3xl: 120rem; /* 1920px - 3xl: prefix */
+    /* Extended viewport breakpoints */
+    --breakpoint-3xl: 120rem; /* 1920px - 3xl: prefix */
 
-  /* ========================================
+    /* ========================================
    * CUSTOM SPACING SCALE
    * ========================================
    *
