@@ -41,8 +41,8 @@
     "prepublishOnly": "pnpm run lint && pnpm run types",
     "prepack": "pnpm run prepublishOnly",
     "types": "vue-tsc --noEmit",
-    "knip": "knip",
-    "test": "echo '⚠️⚠️⚠️no test vitest --watch=false'"
+    "test": "echo '⚠️⚠️⚠️no test vitest --watch=false'",
+    "knip": "knip"
   },
   "author": "Sam Elie <sam@add.dog>",
   "homepage": "https://github.com/samelie/shadcn-vue-design-system#readme",
@@ -89,7 +89,7 @@
     "@tanstack/vue-table": "^8.21.3",
     "@vitejs/plugin-vue": "^6.0.1",
     "@vueuse/core": "^13.9.0",
-    "bumpp": "^10.3.2",
+    "bumpp": "^10.4.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "eslint": "^9.39.2",
