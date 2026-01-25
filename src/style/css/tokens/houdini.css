@@ -1,0 +1,94 @@
+/**
+ * CSS Houdini Design Tokens
+ * Custom properties for Houdini paint worklets
+ */
+
+:root {
+    /* ============================================
+     SQUIRCLE TOKENS
+     ============================================ */
+
+    /* Radius presets */
+    --squircle-radius-xs: 0.25rem;
+    --squircle-radius-sm: 0.5rem;
+    --squircle-radius-md: 1rem;
+    --squircle-radius-lg: 1.5rem;
+    --squircle-radius-xl: 2rem;
+    --squircle-radius-2xl: 3rem;
+
+    /* Smoothing presets (0 = ellipse, 1 = very square) */
+    --squircle-smoothing-low: 0.3;
+    --squircle-smoothing-default: 0.6;
+    --squircle-smoothing-high: 0.8;
+    --squircle-smoothing-ios: 0.6; /* iOS-style squircle */
+
+    /* ============================================
+     ANIMATED GRADIENT TOKENS
+     ============================================ */
+
+    /* Animation speed presets */
+    --gradient-speed-slow: 6s;
+    --gradient-speed-default: 3s;
+    --gradient-speed-fast: 1.5s;
+
+    /* Angle presets */
+    --gradient-angle-diagonal: 45deg;
+    --gradient-angle-horizontal: 90deg;
+    --gradient-angle-vertical: 0deg;
+
+    /* Common gradient color palettes */
+    --gradient-blue-purple-1: #3b82f6;
+    --gradient-blue-purple-2: #8b5cf6;
+
+    --gradient-sunset-1: #f97316;
+    --gradient-sunset-2: #ec4899;
+
+    --gradient-ocean-1: #06b6d4;
+    --gradient-ocean-2: #3b82f6;
+
+    --gradient-forest-1: #22c55e;
+    --gradient-forest-2: #14b8a6;
+
+    --gradient-fire-1: #ef4444;
+    --gradient-fire-2: #f97316;
+    --gradient-fire-3: #fbbf24;
+
+    /* ============================================
+     BORDER PATTERN TOKENS
+     ============================================ */
+
+    /* Spacing presets */
+    --border-pattern-spacing-tight: 4px;
+    --border-pattern-spacing-default: 8px;
+    --border-pattern-spacing-loose: 12px;
+    --border-pattern-spacing-wide: 16px;
+
+    /* Size presets */
+    --border-pattern-size-thin: 1px;
+    --border-pattern-size-default: 2px;
+    --border-pattern-size-thick: 3px;
+    --border-pattern-size-heavy: 4px;
+}
+
+/* ============================================
+   DARK MODE OVERRIDES
+   ============================================ */
+
+.dark {
+    /* Gradient colors that work better in dark mode */
+    --gradient-blue-purple-1: #60a5fa;
+    --gradient-blue-purple-2: #a78bfa;
+
+    --gradient-sunset-1: #fb923c;
+    --gradient-sunset-2: #f472b6;
+
+    --gradient-ocean-1: #22d3ee;
+    --gradient-ocean-2: #60a5fa;
+
+    --gradient-forest-1: #4ade80;
+    --gradient-forest-2: #2dd4bf;
+
+    --gradient-fire-1: #f87171;
+    --gradient-fire-2: #fb923c;
+    --gradient-fire-3: #fcd34d;
+}

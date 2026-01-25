@@ -1,0 +1,182 @@
+/**
+ * CSS Houdini Fallback Styles
+ * Progressive enhancement - works without Houdini, enhanced with it
+ */
+
+/* ============================================
+   SQUIRCLE FALLBACK
+   ============================================ */
+
+/* Base fallback - uses standard border-radius */
+.houdini-squircle {
+    --squircle-radius: 1rem;
+    --squircle-smoothing: 0.6;
+    --squircle-bg: var(--background, #ffffff);
+    --squircle-border-width: 0;
+    --squircle-border-color: var(--border, #e5e7eb);
+
+    border-radius: var(--squircle-radius);
+    background-color: var(--squircle-bg);
+}
+
+.houdini-squircle[data-border="true"] {
+    border: var(--squircle-border-width) solid var(--squircle-border-color);
+}
+
+/* Houdini enhancement when supported */
+@supports (background: paint(squircle)) {
+    .houdini-supported .houdini-squircle,
+    .houdini-squircle.houdini-enabled {
+        background: paint(squircle);
+        border-radius: 0;
+        border: none;
+    }
+}
+
+/* ============================================
+   ANIMATED GRADIENT FALLBACK
+   ============================================ */
+
+/* Base fallback - static CSS gradient */
+.houdini-gradient {
+    --gradient-color-1: #3b82f6;
+    --gradient-color-2: #8b5cf6;
+    --gradient-color-3: ;
+    --gradient-angle: 45deg;
+    --gradient-time: 0;
+    --gradient-type: linear;
+
+    background: linear-gradient(var(--gradient-angle), var(--gradient-color-1), var(--gradient-color-2));
+}
+
+.houdini-gradient[data-three-color="true"] {
+    background: linear-gradient(
+        var(--gradient-angle),
+        var(--gradient-color-1),
+        var(--gradient-color-2),
+        var(--gradient-color-3)
+    );
+}
+
+.houdini-gradient[data-type="radial"] {
+    background: radial-gradient(circle at center, var(--gradient-color-1), var(--gradient-color-2));
+}
+
+.houdini-gradient[data-type="conic"] {
+    background: conic-gradient(
+        from var(--gradient-angle),
+        var(--gradient-color-1),
+        var(--gradient-color-2),
+        var(--gradient-color-1)
+    );
+}
+
+/* Fallback animation using CSS */
+@keyframes gradient-fallback-shift {
+    0% {
+        --gradient-angle: 0deg;
+    }
+    100% {
+        --gradient-angle: 360deg;
+    }
+}
+
+.houdini-gradient[data-animated="true"] {
+    animation: gradient-fallback-shift var(--gradient-speed, 3s) linear infinite;
+}
+
+/* Houdini enhancement when supported */
+@supports (background: paint(animated-gradient)) {
+    .houdini-supported .houdini-gradient,
+    .houdini-gradient.houdini-enabled {
+        background: paint(animated-gradient);
+    }
+
+    /* Animate the --gradient-time property */
+    @property --gradient-time {
+        syntax: "<number>";
+        initial-value: 0;
+        inherits: false;
+    }
+
+    @keyframes gradient-time-animate {
+        from {
+            --gradient-time: 0;
+        }
+        to {
+            --gradient-time: 1;
+        }
+    }
+
+    .houdini-supported .houdini-gradient[data-animated="true"],
+    .houdini-gradient.houdini-enabled[data-animated="true"] {
+        animation: gradient-time-animate var(--gradient-speed, 3s) linear infinite;
+    }
+}
+
+/* ============================================
+   SMOOTH BORDER FALLBACK
+   ============================================ */
+
+/* Base fallback - standard border styles */
+.houdini-border {
+    --border-pattern: dots;
+    --border-color: var(--border, #e5e7eb);
+    --border-width: 2px;
+    --border-spacing: 8px;
+    --border-radius: 0;
+
+    border-radius: var(--border-radius);
+}
+
+.houdini-border[data-pattern="dots"] {
+    border: var(--border-width) dotted var(--border-color);
+}
+
+.houdini-border[data-pattern="dashes"] {
+    border: var(--border-width) dashed var(--border-color);
+}
+
+.houdini-border[data-pattern="wave"] {
+    /* Wave pattern not possible in CSS, use solid fallback */
+    border: var(--border-width) solid var(--border-color);
+}
+
+/* Houdini enhancement when supported */
+@supports (background: paint(smooth-border)) {
+    .houdini-supported .houdini-border,
+    .houdini-border.houdini-enabled {
+        border: none;
+        background: paint(smooth-border);
+        background-clip: padding-box;
+    }
+}
+
+/* ============================================
+   UTILITY CLASSES
+   ============================================ */
+
+/* Squircle radius variants */
+.squircle-sm {
+    --squircle-radius: var(--squircle-radius-sm, 0.5rem);
+}
+.squircle-md {
+    --squircle-radius: var(--squircle-radius-md, 1rem);
+}
+.squircle-lg {
+    --squircle-radius: var(--squircle-radius-lg, 1.5rem);
+}
+.squircle-xl {
+    --squircle-radius: var(--squircle-radius-xl, 2rem);
+}
+
+/* Squircle smoothing variants */
+.squircle-smooth-low {
+    --squircle-smoothing: 0.3;
+}
+.squircle-smooth-medium {
+    --squircle-smoothing: 0.6;
+}
+.squircle-smooth-high {
+    --squircle-smoothing: 0.9;
+}

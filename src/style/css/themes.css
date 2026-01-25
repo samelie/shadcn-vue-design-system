@@ -391,8 +391,8 @@
  */
 .theme-every3min {
     /* Dark by default */
-    --background: oklch(0 0 0);
-    --foreground: oklch(1 0 0);
+    --background: oklch(39.514% 0.00133 15.353);
+    --foreground: oklch(92.929% 0.02807 62.208);
     --card: oklch(0.08 0 0);
     --card-foreground: oklch(1 0 0);
     --popover: oklch(0.08 0 0);
