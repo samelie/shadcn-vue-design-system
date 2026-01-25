@@ -1,6 +1,12 @@
 import type { Ref } from "vue";
 import { onMounted, readonly, ref } from "vue";
 
+// Vite's ?url suffix returns resolved URLs for paint worklets
+import animatedGradientUrl from "./houdini/worklets/animated-gradient.js?url";
+import confettiBackgroundUrl from "./houdini/worklets/confetti-background.js?url";
+import smoothBorderUrl from "./houdini/worklets/smooth-border.js?url";
+import squircleUrl from "./houdini/worklets/squircle.js?url";
+
 export interface HoudiniState {
     supported: Readonly<Ref<boolean>>;
     initialized: Readonly<Ref<boolean>>;
@@ -35,6 +41,7 @@ export function isHoudiniSupported(): boolean {
 
 /**
  * Register all Houdini paint worklets
+ * Uses Vite's ?url imports for proper asset handling
  * Returns promise resolving to success status
  */
 export async function registerWorklets(): Promise<boolean> {
@@ -49,12 +56,12 @@ export async function registerWorklets(): Promise<boolean> {
                 throw new Error("paintWorklet not available");
             }
 
-            // Register worklets - use URLs relative to this module
-            const workletBase = new URL("./", import.meta.url).href;
+            // Register worklets using Vite-resolved URLs
             await Promise.all([
-                css.paintWorklet.addModule(`${workletBase}houdini/worklets/squircle.js`),
-                css.paintWorklet.addModule(`${workletBase}houdini/worklets/animated-gradient.js`),
-                css.paintWorklet.addModule(`${workletBase}houdini/worklets/smooth-border.js`),
+                css.paintWorklet.addModule(squircleUrl),
+                css.paintWorklet.addModule(animatedGradientUrl),
+                css.paintWorklet.addModule(smoothBorderUrl),
+                css.paintWorklet.addModule(confettiBackgroundUrl),
             ]);
 
             moduleInitialized = true;
@@ -80,7 +87,7 @@ export function useHoudini(autoInit = true): HoudiniState {
     const error = ref<Error | null>(moduleError);
 
     onMounted(async () => {
-    // Check support
+        // Check support
         supported.value = isHoudiniSupported();
         moduleSupported = supported.value;
 
