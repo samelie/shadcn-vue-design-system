@@ -20,6 +20,7 @@
 @import "./tokens/shadows.css";
 @import "./tokens/animation.css";
 @import "./tokens/houdini.css";
+@import "./tokens/theme-extensions.css";
 
 /* Import theme presets (optional theme classes) */
 @import "./themes.css";

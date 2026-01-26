@@ -453,3 +453,80 @@
     --chip-info: oklch(0.2 0.08 240);
     --chip-info-foreground: oklch(0.8 0.12 240);
 }
+
+/**
+ * Neobrutalism Theme
+ *
+ * Bold geometric aesthetic with hard shadows, thick borders, and
+ * bright colors. First implementation of the extended theme contract.
+ */
+.theme-brutal {
+    /* Extended theme contract implementation */
+    --theme-shadow-offset-x: 4px;
+    --theme-shadow-offset-y: 4px;
+    --theme-border-width: 2px;
+    --theme-hover-offset-x: 4px;
+    --theme-hover-offset-y: 4px;
+
+    /* Radius override - neobrutalism uses small/sharp */
+    --radius: 5px;
+
+    /* Color palette - bright, bold */
+    --background: oklch(93.46% 0.0304 254.32);
+    --foreground: oklch(0% 0 0);
+    --theme-main: oklch(67.47% 0.1725 259.61);
+    --theme-main-foreground: oklch(0% 0 0);
+    --border: oklch(0% 0 0);
+    --primary: oklch(67.47% 0.1725 259.61);
+    --primary-foreground: oklch(0% 0 0);
+    --secondary: oklch(100% 0 0);
+    --secondary-foreground: oklch(0% 0 0);
+    --muted: oklch(95% 0.02 250);
+    --muted-foreground: oklch(40% 0 0);
+    --accent: oklch(85.75% 0.1855 86.44);
+    --accent-foreground: oklch(0% 0 0);
+    --destructive: oklch(62.8% 0.2577 29.23);
+    --destructive-foreground: oklch(0% 0 0);
+    --card: oklch(100% 0 0);
+    --card-foreground: oklch(0% 0 0);
+    --popover: oklch(100% 0 0);
+    --popover-foreground: oklch(0% 0 0);
+    --input: oklch(0% 0 0);
+    --ring: oklch(67.47% 0.1725 259.61);
+
+    /* Shadows - none by default, hard shadow via theme vars */
+    --shadow-xs: none;
+    --shadow-sm: none;
+    --shadow-md: none;
+
+    /* Chart colors */
+    --chart-1: oklch(67.47% 0.1725 259.61);
+    --chart-2: oklch(85.75% 0.1855 86.44);
+    --chart-3: oklch(62.8% 0.2577 29.23);
+    --chart-4: oklch(77.72% 0.1876 143.41);
+    --chart-5: oklch(70.35% 0.2146 328.36);
+
+    @variant dark {
+        --background: oklch(29.12% 0.0633 270.86);
+        --foreground: oklch(92.49% 0 0);
+        --theme-main: oklch(72.47% 0.1825 259.61);
+        --theme-main-foreground: oklch(0% 0 0);
+        --primary: oklch(72.47% 0.1825 259.61);
+        --primary-foreground: oklch(0% 0 0);
+        --secondary: oklch(23.93% 0 0);
+        --secondary-foreground: oklch(92.49% 0 0);
+        --muted: oklch(35% 0.04 270);
+        --muted-foreground: oklch(70% 0 0);
+        --accent: oklch(80.75% 0.1755 86.44);
+        --accent-foreground: oklch(0% 0 0);
+        --destructive: oklch(67.8% 0.2477 29.23);
+        --destructive-foreground: oklch(0% 0 0);
+        --card: oklch(23.93% 0 0);
+        --card-foreground: oklch(92.49% 0 0);
+        --popover: oklch(23.93% 0 0);
+        --popover-foreground: oklch(92.49% 0 0);
+        --border: oklch(92.49% 0 0);
+        --input: oklch(92.49% 0 0);
+        --ring: oklch(72.47% 0.1825 259.61);
+    }
+}

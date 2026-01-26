@@ -1,0 +1,26 @@
+/**
+ * Extended Theme Contract
+ *
+ * Optional enhancement variables for rich theme behaviors.
+ * All values have sensible defaults (0/none) so themes work without implementing.
+ */
+:root {
+    /* Shadow offset system */
+    --theme-shadow-offset-x: 0px;
+    --theme-shadow-offset-y: 0px;
+    --theme-shadow-blur: var(--shadow-sm);
+
+    /* Computed hard shadow (for neobrutalism-style themes) */
+    --theme-shadow-hard: var(--theme-shadow-offset-x) var(--theme-shadow-offset-y) 0 0 var(--border);
+
+    /* Border treatment */
+    --theme-border-width: 1px;
+
+    /* Hover interaction offsets */
+    --theme-hover-offset-x: 0px;
+    --theme-hover-offset-y: 0px;
+
+    /* Accent/main color (for themes with accent-heavy palettes) */
+    --theme-main: var(--primary);
+    --theme-main-foreground: var(--primary-foreground);
+}
