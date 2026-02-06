@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { provide, watchEffect } from "vue";
-import { applyHoudiniClass, useHoudini } from "~/composables/useHoudini";
-import type { HoudiniState } from "~/composables/useHoudini";
+import { applyHoudiniClass, useHoudini } from "~/composables";
+import type { HoudiniState } from "~/composables";
 
 const props = withDefaults(
   defineProps<{

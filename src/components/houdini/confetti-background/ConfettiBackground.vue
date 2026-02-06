@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, ref } from "vue";
-import { isHoudiniSupported, registerWorklets } from "~/composables/useHoudini";
+import { isHoudiniSupported, registerWorklets } from "~/composables";
 
 export interface ConfettiBackgroundProps {
     /** Number of confetti pieces (default: 25) */
