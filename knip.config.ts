@@ -6,8 +6,11 @@ export default defineKnipConfig({
     entry: ["src/main.ts", "src/index.ts"],
     project: ["src/**/*.{ts,vue}"],
     ignoreDependencies: [
+        // WHY: referenced in CSS @import, not detectable by knip
         "@adddog/design-tokens",
+        // WHY: peerDep — used by consuming apps, not directly in src
         "@internationalized/date",
+        // WHY: build tooling deps used in vite/postcss config, not in src
         "@tailwindcss/container-queries",
         "@tailwindcss/vite",
         "@vitejs/plugin-vue",
@@ -15,9 +18,12 @@ export default defineKnipConfig({
         "tailwindcss",
         "unbuild",
     ],
+    // WHY: referenced in tsconfig types, not in source imports
     ignoreUnresolved: ["vitest/globals"],
     ignore: [
+        // WHY: standalone example app, not part of library src
         "example-app/**",
+        // WHY: CSS theme files imported via CSS @import, not TS
         "src/style/css/themes/**",
     ],
 });
