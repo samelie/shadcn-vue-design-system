@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalTagsInputItemDelete v-bind="$attrs">
+  <OriginalTagsInputItemDelete v-bind="$attrs" data-slot="tags-input-item-delete">
     <slot />
   </OriginalTagsInputItemDelete>
 </template>

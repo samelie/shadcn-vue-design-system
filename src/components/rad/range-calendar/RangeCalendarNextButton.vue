@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalRangeCalendarNextButton v-bind="$attrs">
+  <OriginalRangeCalendarNextButton v-bind="$attrs" data-slot="range-calendar-next-button">
     <slot />
   </OriginalRangeCalendarNextButton>
 </template>

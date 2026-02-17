@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalTagsInput v-bind="$attrs">
+  <OriginalTagsInput v-bind="$attrs" data-slot="tags-input">
     <template #default="slotProps">
       <slot v-bind="slotProps" />
     </template>

@@ -5,5 +5,5 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalCommandSeparator v-bind="$attrs" />
+  <OriginalCommandSeparator v-bind="$attrs" data-slot="command-separator" />
 </template>

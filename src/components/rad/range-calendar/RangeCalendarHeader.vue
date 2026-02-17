@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalRangeCalendarHeader v-bind="$attrs">
+  <OriginalRangeCalendarHeader v-bind="$attrs" data-slot="range-calendar-header">
     <slot />
   </OriginalRangeCalendarHeader>
 </template>

@@ -529,4 +529,19 @@
         --input: oklch(92.49% 0 0);
         --ring: oklch(72.47% 0.1825 259.61);
     }
+
+    /* Component-scoped structural overrides */
+    [data-slot="dialog-content"] {
+        --dialog-radius: 0;
+        --dialog-padding: 2rem;
+    }
+    [data-slot="button"] {
+        --button-radius: 0;
+    }
+    [data-slot="input"] {
+        --input-radius: 0;
+    }
+    [data-slot="popover-content"] {
+        --popover-radius: 0;
+    }
 }

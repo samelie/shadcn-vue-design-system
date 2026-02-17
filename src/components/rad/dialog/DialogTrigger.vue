@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDialogTrigger v-bind="$attrs">
+  <OriginalDialogTrigger v-bind="$attrs" data-slot="dialog-trigger">
     <slot />
   </OriginalDialogTrigger>
 </template>

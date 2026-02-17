@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDialogScrollContent v-bind="$attrs">
+  <OriginalDialogScrollContent v-bind="$attrs" data-slot="dialog-scroll-content">
     <slot />
   </OriginalDialogScrollContent>
 </template>

@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalCommandShortcut v-bind="$attrs">
+  <OriginalCommandShortcut v-bind="$attrs" data-slot="command-shortcut">
     <slot />
   </OriginalCommandShortcut>
 </template>

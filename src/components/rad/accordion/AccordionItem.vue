@@ -9,7 +9,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalAccordionItem v-bind="props">
+  <OriginalAccordionItem v-bind="props" data-slot="accordion-item">
     <template #default="slotProps">
       <slot v-bind="slotProps" />
     </template>

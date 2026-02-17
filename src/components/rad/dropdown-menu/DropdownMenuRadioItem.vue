@@ -9,7 +9,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDropdownMenuRadioItem v-bind="props">
+  <OriginalDropdownMenuRadioItem v-bind="props" data-slot="dropdown-menu-radio-item">
     <slot />
     <template #indicator-icon>
       <slot name="indicator-icon" />

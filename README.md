@@ -2,14 +2,26 @@
 
 Vue 3 component library wrapping reka-ui primitives with Tailwind CSS styling, following shadcn-vue patterns.
 
+## Usage
+
+**Consumers should only import from `rad/` components.** The `rad/` layer is the public API — it wraps `ui/` with transparent pass-throughs and providers. Do not import directly from `ui/`.
+
+```vue
+<!-- CORRECT -->
+import { Button } from "@adddog/shadcn-vue-design-system/components/rad/button"
+
+<!-- WRONG — do not import from ui/ directly -->
+import { Button } from "@adddog/shadcn-vue-design-system/components/ui/button"
+```
+
 ## Architecture
 
 ### Component Layers
 
 ```
 src/components/
-├── ui/          # Base: reka-ui wrappers with Tailwind styling
-├── rad/         # Aliases + providers (HoudiniProvider)
+├── ui/          # Internal: reka-ui wrappers with Tailwind styling (do not import directly)
+├── rad/         # Public API: aliases + providers (HoudiniProvider) — use these
 ├── custom/      # App-specific composites (IconButtonTooltip)
 └── houdini/     # CSS Paint API components (ConfettiBackground)
 ```

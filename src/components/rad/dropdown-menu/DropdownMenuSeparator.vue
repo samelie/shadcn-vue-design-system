@@ -5,5 +5,5 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDropdownMenuSeparator v-bind="$attrs" />
+  <OriginalDropdownMenuSeparator v-bind="$attrs" data-slot="dropdown-menu-separator" />
 </template>

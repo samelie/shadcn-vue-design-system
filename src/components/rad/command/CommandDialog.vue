@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalCommandDialog v-bind="$attrs">
+  <OriginalCommandDialog v-bind="$attrs" data-slot="command-dialog">
     <slot />
   </OriginalCommandDialog>
 </template>

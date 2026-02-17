@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalCalendar v-bind="$attrs">
+  <OriginalCalendar v-bind="$attrs" data-slot="calendar">
     <template #default="slotProps">
       <slot v-bind="slotProps" />
     </template>

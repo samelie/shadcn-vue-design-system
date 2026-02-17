@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDrawerTrigger v-bind="$attrs">
+  <OriginalDrawerTrigger v-bind="$attrs" data-slot="drawer-trigger">
     <slot />
   </OriginalDrawerTrigger>
 </template>

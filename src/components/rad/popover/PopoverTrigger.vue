@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalPopoverTrigger v-bind="$attrs">
+  <OriginalPopoverTrigger v-bind="$attrs" data-slot="popover-trigger">
     <slot />
   </OriginalPopoverTrigger>
 </template>

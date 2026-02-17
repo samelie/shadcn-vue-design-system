@@ -9,7 +9,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalTagsInputItem v-bind="props">
+  <OriginalTagsInputItem v-bind="props" data-slot="tags-input-item">
     <slot />
   </OriginalTagsInputItem>
 </template>

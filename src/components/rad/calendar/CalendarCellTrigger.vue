@@ -9,7 +9,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalCalendarCellTrigger v-bind="props">
+  <OriginalCalendarCellTrigger v-bind="props" data-slot="calendar-cell-trigger">
     <slot />
   </OriginalCalendarCellTrigger>
 </template>

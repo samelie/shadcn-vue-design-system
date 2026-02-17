@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalAccordionTrigger v-bind="$attrs">
+  <OriginalAccordionTrigger v-bind="$attrs" data-slot="accordion-trigger">
     <slot />
     <template #icon>
       <slot name="icon" />

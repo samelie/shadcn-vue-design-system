@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalTable v-bind="$attrs">
+  <OriginalTable v-bind="$attrs" data-slot="table">
     <slot />
   </OriginalTable>
 </template>

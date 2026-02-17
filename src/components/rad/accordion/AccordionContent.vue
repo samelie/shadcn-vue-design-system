@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalAccordionContent v-bind="$attrs">
+  <OriginalAccordionContent v-bind="$attrs" data-slot="accordion-content">
     <slot />
   </OriginalAccordionContent>
 </template>

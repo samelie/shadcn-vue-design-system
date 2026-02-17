@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDialogClose v-bind="$attrs">
+  <OriginalDialogClose v-bind="$attrs" data-slot="dialog-close">
     <slot />
   </OriginalDialogClose>
 </template>

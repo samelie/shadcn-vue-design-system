@@ -5,7 +5,7 @@
 /* Import sizing configuration - breakpoints, containers, spacing */
 @import "./sizing.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:is(.dark, .dark *));
 
 /* Touch device detection variants */
 @custom-variant touch (@media (pointer: coarse));
@@ -21,6 +21,7 @@
 @import "./tokens/animation.css";
 @import "./tokens/houdini.css";
 @import "./tokens/theme-extensions.css";
+@import "./tokens/component-vars.css";
 
 /* Import theme presets (optional theme classes) */
 @import "./themes.css";

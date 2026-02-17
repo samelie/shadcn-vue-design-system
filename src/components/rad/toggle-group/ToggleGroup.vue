@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalToggleGroup v-bind="$attrs">
+  <OriginalToggleGroup v-bind="$attrs" data-slot="toggle-group">
     <template #default="slotProps">
       <slot v-bind="slotProps" />
     </template>

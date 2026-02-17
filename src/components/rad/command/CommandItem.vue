@@ -9,7 +9,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalCommandItem v-bind="props">
+  <OriginalCommandItem v-bind="props" data-slot="command-item">
     <slot />
   </OriginalCommandItem>
 </template>

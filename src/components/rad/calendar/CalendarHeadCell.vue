@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalCalendarHeadCell v-bind="$attrs">
+  <OriginalCalendarHeadCell v-bind="$attrs" data-slot="calendar-head-cell">
     <slot />
   </OriginalCalendarHeadCell>
 </template>

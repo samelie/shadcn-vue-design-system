@@ -5,5 +5,5 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDrawerOverlay v-bind="$attrs" />
+  <OriginalDrawerOverlay v-bind="$attrs" data-slot="drawer-overlay" />
 </template>

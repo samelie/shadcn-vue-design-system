@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalCalendarGrid v-bind="$attrs">
+  <OriginalCalendarGrid v-bind="$attrs" data-slot="calendar-grid">
     <slot />
   </OriginalCalendarGrid>
 </template>

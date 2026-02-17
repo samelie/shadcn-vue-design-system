@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDrawerFooter v-bind="$attrs">
+  <OriginalDrawerFooter v-bind="$attrs" data-slot="drawer-footer">
     <slot />
   </OriginalDrawerFooter>
 </template>

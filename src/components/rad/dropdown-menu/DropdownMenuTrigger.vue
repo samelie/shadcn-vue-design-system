@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDropdownMenuTrigger v-bind="$attrs">
+  <OriginalDropdownMenuTrigger v-bind="$attrs" data-slot="dropdown-menu-trigger">
     <slot />
   </OriginalDropdownMenuTrigger>
 </template>

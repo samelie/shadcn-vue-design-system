@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalDrawerTitle v-bind="$attrs">
+  <OriginalDrawerTitle v-bind="$attrs" data-slot="drawer-title">
     <slot />
   </OriginalDrawerTitle>
 </template>

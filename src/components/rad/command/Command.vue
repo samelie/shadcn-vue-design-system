@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalCommand v-bind="$attrs">
+  <OriginalCommand v-bind="$attrs" data-slot="command">
     <slot />
   </OriginalCommand>
 </template>

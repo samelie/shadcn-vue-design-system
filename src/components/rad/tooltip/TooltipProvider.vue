@@ -5,7 +5,7 @@ defineOptions({ inheritAttrs: false })
 </script>
 
 <template>
-  <OriginalTooltipProvider v-bind="$attrs">
+  <OriginalTooltipProvider v-bind="$attrs" data-slot="tooltip-provider">
     <slot />
   </OriginalTooltipProvider>
 </template>
