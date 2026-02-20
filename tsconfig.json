@@ -31,14 +31,13 @@
         "noUnusedParameters": true,
         "noFallthroughCasesInSwitch": true,
         "noUncheckedSideEffectImports": true,
+        "erasableSyntaxOnly": true,
+        "types": [
+            "vite/client",
+            "vitest/globals"
+        ],
+        "baseUrl": ".",
         "paths": {
-            "@adddog/design-tokens/*": [
-                "./packages/design-tokens/*",
-                "../design-tokens/*",
-                "../packages/design-tokens/*",
-                "../../packages/design-tokens/*",
-                "../../../packages/design-tokens/*"
-            ],
             "~/*": [
                 "./src/*"
             ],
@@ -54,12 +53,7 @@
             "~/composables": [
                 "./src/composables"
             ]
-        },
-        "types": [
-            "vite/client",
-            "vitest/globals"
-        ],
-        "baseUrl": "."
+        }
     },
     "include": [
         "src"

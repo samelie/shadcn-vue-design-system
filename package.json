@@ -23,6 +23,7 @@
     "./other/*": "./src/other/*",
     "./components/*": "./src/components/*",
     "./composables/*": "./src/composables/*",
+    "./lib/utils": "./src/lib/utils.ts",
     "./lib/*": "./src/lib/*",
     "./styles.css": "./src/style/styles.css",
     "./houdini/*": "./src/composables/houdini/*",

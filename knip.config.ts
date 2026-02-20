@@ -17,6 +17,7 @@ export default defineKnipConfig({
         "@vitejs/plugin-vue",
         "tailwindcss-animate",
         "tailwindcss",
+        "tw-animate-css",
         "unbuild",
     ],
     // WHY: referenced in tsconfig types, not in source imports
