@@ -8,6 +8,7 @@ export default defineKnipConfig({
     ignoreDependencies: [
         // WHY: referenced in CSS @import, not detectable by knip
         "@adddog/design-tokens",
+        "@adddog/tailwind-theme",
         // WHY: peerDep — used by consuming apps, not directly in src
         "@internationalized/date",
         // WHY: build tooling deps used in vite/postcss config, not in src
@@ -23,7 +24,5 @@ export default defineKnipConfig({
     ignore: [
         // WHY: standalone example app, not part of library src
         "example-app/**",
-        // WHY: CSS theme files imported via CSS @import, not TS
-        "src/style/css/themes/**",
     ],
 });

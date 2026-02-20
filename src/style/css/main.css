@@ -1,55 +1,9 @@
-@import "tailwindcss";
+/* Theme configuration from @adddog/tailwind-theme */
+@import "@adddog/tailwind-theme/theme.css";
 
-@import "tw-animate-css";
-
-/* Import sizing configuration - breakpoints, containers, spacing */
-@import "./sizing.css";
-
-@custom-variant dark (&:is(.dark, .dark *));
-
-/* Touch device detection variants */
-@custom-variant touch (@media (pointer: coarse));
-
-@custom-variant not-touch (@media not (pointer: coarse));
-
-@custom-variant any-touch (@media (any-pointer: coarse));
-
-/* Import token layers */
-@import "./tokens/colors.css";
-@import "./tokens/typography.css";
-@import "./tokens/shadows.css";
-@import "./tokens/animation.css";
+/* Design system specific: Houdini tokens */
 @import "./tokens/houdini.css";
-@import "./tokens/theme-extensions.css";
 @import "./tokens/component-vars.css";
 
-/* Import theme presets (optional theme classes) */
-@import "./themes.css";
-
-/* Import font configuration */
-@import "./fonts.css";
-
-/* Import Tailwind theme mapping - single source of truth */
-@import "./tailwind-mapping.css";
-
-/* Import Houdini fallbacks for progressive enhancement */
+/* Design system specific: Houdini fallbacks */
 @import "../houdini/fallbacks.css";
-
-@layer base {
-    * {
-        @apply border-border outline-ring/50;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
-}
-
-html {
-    color-scheme: light dark;
-}
-html.dark {
-    color-scheme: dark;
-}
-html.light {
-    color-scheme: light;
-}
