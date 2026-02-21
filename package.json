@@ -107,6 +107,9 @@
     "vue-tsc": "^3.2.3"
   },
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "engines": {
     "node": ">= 22",
     "pnpm": ">= 10",
