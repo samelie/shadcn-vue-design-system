@@ -80,6 +80,7 @@
   },
   "devDependencies": {
     "@adddog/design-tokens": "workspace:*",
+    "@adddog/monorepo-consistency": "workspace:*",
     "@internationalized/date": "^3.11.0",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/vite": "^4.1.18",
