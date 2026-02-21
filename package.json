@@ -44,7 +44,8 @@
     "prepack": "pnpm run prepublishOnly",
     "types": "vue-tsc --noEmit",
     "test": "echo '⚠️⚠️⚠️no test vitest --watch=false'",
-    "knip": "knip"
+    "knip": "knip",
+    "version:patch": "npm version patch --no-git-tag-version"
   },
   "author": "Sam Elie <sam@add.dog>",
   "homepage": "https://github.com/samelie/shadcn-vue-design-system#readme",
