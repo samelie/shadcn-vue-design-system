@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalTableFooter from '../../ui/table/TableFooter.vue'
+import OriginalTableFooter from "../../ui/table/TableFooter.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalTableFooter v-bind="$attrs" data-slot="table-footer">
-    <slot />
-  </OriginalTableFooter>
+    <OriginalTableFooter v-bind="$attrs" data-slot="table-footer">
+        <slot />
+    </OriginalTableFooter>
 </template>

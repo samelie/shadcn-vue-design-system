@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { CalendarCellTriggerProps } from 'reka-ui'
-import type { HTMLAttributes } from 'vue'
-import OriginalCalendarCellTrigger from '../../ui/calendar/CalendarCellTrigger.vue'
+import type { CalendarCellTriggerProps } from "reka-ui";
+import type { HTMLAttributes } from "vue";
+import OriginalCalendarCellTrigger from "../../ui/calendar/CalendarCellTrigger.vue";
 
-const props = defineProps<CalendarCellTriggerProps & { class?: HTMLAttributes['class'] }>()
+defineOptions({ inheritAttrs: false });
 
-defineOptions({ inheritAttrs: false })
+const props = defineProps<CalendarCellTriggerProps & { class?: HTMLAttributes["class"] }>();
 </script>
 
 <template>
-  <OriginalCalendarCellTrigger v-bind="props" data-slot="calendar-cell-trigger">
-    <slot />
-  </OriginalCalendarCellTrigger>
+    <OriginalCalendarCellTrigger v-bind="props" data-slot="calendar-cell-trigger">
+        <slot />
+    </OriginalCalendarCellTrigger>
 </template>

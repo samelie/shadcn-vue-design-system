@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import OriginalCalendar from '../../ui/calendar/Calendar.vue'
+import OriginalCalendar from "../../ui/calendar/Calendar.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalCalendar v-bind="$attrs" data-slot="calendar">
-    <template #default="slotProps">
-      <slot v-bind="slotProps" />
-    </template>
-  </OriginalCalendar>
+    <OriginalCalendar v-bind="$attrs" data-slot="calendar">
+        <template #default="slotProps">
+            <slot v-bind="slotProps" />
+        </template>
+    </OriginalCalendar>
 </template>

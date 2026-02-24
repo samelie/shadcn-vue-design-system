@@ -11,6 +11,7 @@ export * from "./rad/input";
 export * from "./rad/label";
 export * from "./rad/popover";
 export * from "./rad/range-calendar";
+export * from "./rad/select";
 export * from "./rad/switch";
 export * from "./rad/table";
 export * from "./rad/tags-input";

@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import type { TagsInputItemProps } from 'reka-ui'
-import type { HTMLAttributes } from 'vue'
-import OriginalTagsInputItem from '../../ui/tags-input/TagsInputItem.vue'
+import type { TagsInputItemProps } from "reka-ui";
+import type { HTMLAttributes } from "vue";
+import OriginalTagsInputItem from "../../ui/tags-input/TagsInputItem.vue";
 
-const props = defineProps<TagsInputItemProps & { class?: HTMLAttributes['class'] }>()
+defineOptions({ inheritAttrs: false });
 
-defineOptions({ inheritAttrs: false })
+const props = defineProps<TagsInputItemProps & { class?: HTMLAttributes["class"] }>();
 </script>
 
 <template>
-  <OriginalTagsInputItem v-bind="props" data-slot="tags-input-item">
-    <slot />
-  </OriginalTagsInputItem>
+    <OriginalTagsInputItem v-bind="props" data-slot="tags-input-item">
+        <slot />
+    </OriginalTagsInputItem>
 </template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalPopover from '../../ui/popover/Popover.vue'
+import OriginalPopover from "../../ui/popover/Popover.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalPopover v-bind="$attrs" data-slot="popover">
-    <slot />
-  </OriginalPopover>
+    <OriginalPopover v-bind="$attrs" data-slot="popover">
+        <slot />
+    </OriginalPopover>
 </template>

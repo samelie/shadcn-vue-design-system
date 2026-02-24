@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import OriginalCommandSeparator from '../../ui/command/CommandSeparator.vue'
+import OriginalCommandSeparator from "../../ui/command/CommandSeparator.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalCommandSeparator v-bind="$attrs" data-slot="command-separator" />
+    <OriginalCommandSeparator v-bind="$attrs" data-slot="command-separator" />
 </template>

@@ -1,14 +1,14 @@
 <script setup lang="ts">
-import OriginalAccordionTrigger from '../../ui/accordion/AccordionTrigger.vue'
+import OriginalAccordionTrigger from "../../ui/accordion/AccordionTrigger.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalAccordionTrigger v-bind="$attrs" data-slot="accordion-trigger">
-    <slot />
-    <template #icon>
-      <slot name="icon" />
-    </template>
-  </OriginalAccordionTrigger>
+    <OriginalAccordionTrigger v-bind="$attrs" data-slot="accordion-trigger">
+        <slot />
+        <template #icon>
+            <slot name="icon" />
+        </template>
+    </OriginalAccordionTrigger>
 </template>

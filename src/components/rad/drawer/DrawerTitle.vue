@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalDrawerTitle from '../../ui/drawer/DrawerTitle.vue'
+import OriginalDrawerTitle from "../../ui/drawer/DrawerTitle.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalDrawerTitle v-bind="$attrs" data-slot="drawer-title">
-    <slot />
-  </OriginalDrawerTitle>
+    <OriginalDrawerTitle v-bind="$attrs" data-slot="drawer-title">
+        <slot />
+    </OriginalDrawerTitle>
 </template>

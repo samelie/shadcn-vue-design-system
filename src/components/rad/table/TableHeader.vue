@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalTableHeader from '../../ui/table/TableHeader.vue'
+import OriginalTableHeader from "../../ui/table/TableHeader.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalTableHeader v-bind="$attrs" data-slot="table-header">
-    <slot />
-  </OriginalTableHeader>
+    <OriginalTableHeader v-bind="$attrs" data-slot="table-header">
+        <slot />
+    </OriginalTableHeader>
 </template>

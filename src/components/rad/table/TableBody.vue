@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalTableBody from '../../ui/table/TableBody.vue'
+import OriginalTableBody from "../../ui/table/TableBody.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalTableBody v-bind="$attrs" data-slot="table-body">
-    <slot />
-  </OriginalTableBody>
+    <OriginalTableBody v-bind="$attrs" data-slot="table-body">
+        <slot />
+    </OriginalTableBody>
 </template>

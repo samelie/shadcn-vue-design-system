@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalDropdownMenuShortcut from '../../ui/dropdown-menu/DropdownMenuShortcut.vue'
+import OriginalDropdownMenuShortcut from "../../ui/dropdown-menu/DropdownMenuShortcut.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalDropdownMenuShortcut v-bind="$attrs" data-slot="dropdown-menu-shortcut">
-    <slot />
-  </OriginalDropdownMenuShortcut>
+    <OriginalDropdownMenuShortcut v-bind="$attrs" data-slot="dropdown-menu-shortcut">
+        <slot />
+    </OriginalDropdownMenuShortcut>
 </template>

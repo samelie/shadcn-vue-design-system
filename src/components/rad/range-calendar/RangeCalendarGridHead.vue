@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalRangeCalendarGridHead from '../../ui/range-calendar/RangeCalendarGridHead.vue'
+import OriginalRangeCalendarGridHead from "../../ui/range-calendar/RangeCalendarGridHead.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalRangeCalendarGridHead v-bind="$attrs" data-slot="range-calendar-grid-head">
-    <slot />
-  </OriginalRangeCalendarGridHead>
+    <OriginalRangeCalendarGridHead v-bind="$attrs" data-slot="range-calendar-grid-head">
+        <slot />
+    </OriginalRangeCalendarGridHead>
 </template>

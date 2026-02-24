@@ -71,7 +71,6 @@ const cssVars = computed(() => ({
     "--confetti-seed": props.seed,
     "--confetti-duration": `${props.duration}s`,
 }));
-
 </script>
 
 <template>

@@ -1,13 +1,13 @@
 <script setup lang="ts">
-import OriginalCheckbox from '../../ui/checkbox/Checkbox.vue'
+import OriginalCheckbox from "../../ui/checkbox/Checkbox.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalCheckbox v-bind="$attrs" data-slot="checkbox">
-    <template v-for="(_, name) in $slots" #[name]="slotProps">
-      <slot :name="name" v-bind="slotProps ?? {}" />
-    </template>
-  </OriginalCheckbox>
+    <OriginalCheckbox v-bind="$attrs" data-slot="checkbox">
+        <template v-for="(_, name) in $slots" #[name]="slotProps">
+            <slot :name="name" v-bind="slotProps ?? {}" />
+        </template>
+    </OriginalCheckbox>
 </template>

@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalDialog from '../../ui/dialog/Dialog.vue'
+import OriginalDialog from "../../ui/dialog/Dialog.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalDialog v-bind="$attrs" data-slot="dialog">
-    <slot />
-  </OriginalDialog>
+    <OriginalDialog v-bind="$attrs" data-slot="dialog">
+        <slot />
+    </OriginalDialog>
 </template>

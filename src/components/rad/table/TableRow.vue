@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalTableRow from '../../ui/table/TableRow.vue'
+import OriginalTableRow from "../../ui/table/TableRow.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalTableRow v-bind="$attrs" data-slot="table-row">
-    <slot />
-  </OriginalTableRow>
+    <OriginalTableRow v-bind="$attrs" data-slot="table-row">
+        <slot />
+    </OriginalTableRow>
 </template>

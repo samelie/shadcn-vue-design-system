@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import OriginalDropdownMenuSub from '../../ui/dropdown-menu/DropdownMenuSub.vue'
+import OriginalDropdownMenuSub from "../../ui/dropdown-menu/DropdownMenuSub.vue";
 
-defineOptions({ inheritAttrs: false })
+defineOptions({ inheritAttrs: false });
 </script>
 
 <template>
-  <OriginalDropdownMenuSub v-bind="$attrs" data-slot="dropdown-menu-sub">
-    <slot />
-  </OriginalDropdownMenuSub>
+    <OriginalDropdownMenuSub v-bind="$attrs" data-slot="dropdown-menu-sub">
+        <slot />
+    </OriginalDropdownMenuSub>
 </template>

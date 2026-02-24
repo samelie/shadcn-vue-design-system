@@ -4,7 +4,7 @@ import { defineKnipConfig } from "@adddog/monorepo-consistency";
 import { parse } from "vue/compiler-sfc";
 
 export default defineKnipConfig({
-    entry: ["src/main.ts","src/index.ts"],
+    entry: ["src/main.ts", "src/index.ts"],
     project: ["src/**/*.{ts,vue}"],
     ignoreDependencies: ["tailwindcss"],
     compilers: {
