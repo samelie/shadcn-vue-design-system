@@ -1,6 +1,6 @@
 {
   "name": "@adddog/shadcn-vue-design-system",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "A collection of reusable Vue 3 components built with Radix Vue and Tailwind CSS, following the shadcn/ui pattern",
   "keywords": [
     "vue",
