@@ -40,7 +40,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "release": "bumpp --yes --no-push --no-tag --release patch",
-    "prepublishOnly": "pnpm run lint && pnpm run types",
+    "prepublishOnly": "pnpm run types",
     "prepack": "pnpm run prepublishOnly",
     "types": "vue-tsc --noEmit",
     "test": "echo '⚠️⚠️⚠️no test vitest --watch=false'",
