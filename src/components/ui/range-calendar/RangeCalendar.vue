@@ -17,7 +17,9 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
 
 <template>
     <RangeCalendarRoot
-        v-slot="{ grid, weekDays }" data-slot="range-calendar" :class="cn('p-3', props.class)"
+        v-slot="{ grid, weekDays }"
+        data-slot="range-calendar"
+        :class="cn('p-3', props.class)"
         v-bind="forwarded"
     >
         <RangeCalendarHeader>
@@ -33,15 +35,24 @@ const forwarded = useForwardPropsEmits(delegatedProps, emits);
             <RangeCalendarGrid v-for="month in grid" :key="month.value.toString()">
                 <RangeCalendarGridHead>
                     <RangeCalendarGridRow>
-                        <RangeCalendarHeadCell v-for="day in weekDays" :key="day">
+                        <RangeCalendarHeadCell
+                            v-for="day in weekDays" :key="day"
+                        >
                             {{ day }}
                         </RangeCalendarHeadCell>
                     </RangeCalendarGridRow>
                 </RangeCalendarGridHead>
                 <RangeCalendarGridBody>
                     <RangeCalendarGridRow v-for="(weekDates, index) in month.rows" :key="`weekDate-${index}`" class="mt-2 w-full">
-                        <RangeCalendarCell v-for="weekDate in weekDates" :key="weekDate.toString()" :date="weekDate">
-                            <RangeCalendarCellTrigger :day="weekDate" :month="month.value" />
+                        <RangeCalendarCell
+                            v-for="weekDate in weekDates"
+                            :key="weekDate.toString()"
+                            :date="weekDate"
+                        >
+                            <RangeCalendarCellTrigger
+                                :day="weekDate"
+                                :month="month.value"
+                            />
                         </RangeCalendarCell>
                     </RangeCalendarGridRow>
                 </RangeCalendarGridBody>

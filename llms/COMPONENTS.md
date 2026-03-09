@@ -2,8 +2,9 @@
 
 Vue port of shadcn/ui built with Reka UI + Tailwind CSS.
 
-## Installed Components (17)
+## Installed Components (21)
 
+- **accordion** - Collapsible content sections
 - **button** - Clickable elements, various styles/sizes
 - **calendar** - Date selection interface
 - **checkbox** - Binary selection input
@@ -13,8 +14,10 @@ Vue port of shadcn/ui built with Reka UI + Tailwind CSS.
 - **dropdown-menu** - Contextual menu with actions
 - **input** - Text input field
 - **label** - Form field label
+- **native-select** - Native HTML select wrapper
 - **popover** - Floating content overlay
 - **range-calendar** - Date range selection
+- **select** - Custom styled select dropdown
 - **switch** - Toggle on/off control
 - **table** - Data display in rows/columns
 - **tags-input** - Multi-value tag entry
@@ -22,9 +25,9 @@ Vue port of shadcn/ui built with Reka UI + Tailwind CSS.
 - **toggle-group** - Mutually exclusive toggle buttons
 - **tooltip** - Hover info overlay
 
-## Available Not Installed (47)
+## Available Not Installed (44)
 
-accordion, alert, alert-dialog, aspect-ratio, avatar, badge, breadcrumb, button-group, card, carousel, chart, collapsible, combobox, context-menu, data-table, date-picker, empty, field, form, hover-card, input-group, input-otp, item, kbd, menubar, native-select, navigation-menu, number-field, pagination, pin-input, progress, radio-group, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, spinner, stepper, tabs, textarea, toast, typography
+alert, alert-dialog, aspect-ratio, avatar, badge, breadcrumb, button-group, card, carousel, chart, collapsible, combobox, context-menu, data-table, date-picker, empty, field, form, hover-card, input-group, input-otp, item, kbd, menubar, navigation-menu, number-field, pagination, pin-input, progress, radio-group, resizable, scroll-area, separator, sheet, sidebar, skeleton, slider, sonner, spinner, stepper, tabs, textarea, toast, typography
 
 ## Installation
 
@@ -56,7 +59,7 @@ Each component exports from `src/components/ui/[name]/index.ts` with:
 
 ## Key Dependencies
 
-- **radix-vue** (Reka UI) - Headless component primitives
+- **reka-ui** - Headless component primitives
 - **tailwindcss** - Styling framework
 - **class-variance-authority** - Variant management
 - **tailwind-merge** - Class conflict resolution

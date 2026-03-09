@@ -17,7 +17,8 @@ const forwardedProps = useForwardProps(delegatedProps);
 
 <template>
     <CalendarCellTrigger
-        data-slot="calendar-cell-trigger" :class="cn(
+        data-slot="calendar-cell-trigger"
+        :class="cn(
             buttonVariants({ variant: 'ghost' }),
             'size-8 p-0 font-normal aria-selected:opacity-100 cursor-default',
             '[&[data-today]:not([data-selected])]:bg-accent [&[data-today]:not([data-selected])]:text-accent-foreground',
@@ -30,7 +31,8 @@ const forwardedProps = useForwardProps(delegatedProps);
             // Outside months
             'data-[outside-view]:text-muted-foreground',
             props.class,
-        )" v-bind="forwardedProps"
+        )"
+        v-bind="forwardedProps"
     >
         <slot />
     </CalendarCellTrigger>
