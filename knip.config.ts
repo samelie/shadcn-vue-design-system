@@ -4,6 +4,8 @@ import type { SFCScriptBlock, SFCStyleBlock } from "vue/compiler-sfc";
 import { defineKnipConfig } from "@adddog/monorepo-consistency";
 import { parse } from "vue/compiler-sfc";
 
+const STYLE_IMPORT_RE = /(?<=@)import[^;]+/g;
+
 function getScriptBlockContent(block: SFCScriptBlock | null): string[] {
     if (!block) return [];
     if (block.src) return [`import '${block.src}'`];
@@ -17,7 +19,7 @@ function getStyleBlockContent(block: SFCStyleBlock | null): string[] {
 }
 
 function getStyleImports(content: string): string {
-    return [...content.matchAll(/(?<=@)import[^;]+/g)].join("\n");
+    return [...content.matchAll(STYLE_IMPORT_RE)].join("\n");
 }
 
 export default defineKnipConfig({

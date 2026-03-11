@@ -15,6 +15,7 @@ export * from "./rad/select";
 export * from "./rad/switch";
 export * from "./rad/table";
 export * from "./rad/tags-input";
+export * from "./rad/textarea";
 export * from "./rad/toggle";
 export * from "./rad/toggle-group";
 export * from "./rad/tooltip";

@@ -210,7 +210,7 @@ defineExpose({
     },
     /** Expand to largest snap point (usually full screen) */
     expand: () => {
-        const snapPoint = props.snapPoints[props.snapPoints.length - 1];
+        const snapPoint = props.snapPoints.at(-1);
         if (snapPoint !== undefined) activeSnap.value = snapPoint;
     },
     /** Collapse to smallest snap point (usually peek/tab view) */
