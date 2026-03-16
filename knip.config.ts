@@ -45,7 +45,6 @@ export default defineKnipConfig({
         "@tailwindcss/container-queries",
         "@tailwindcss/vite",
         "@vitejs/plugin-vue",
-        "tailwindcss-animate",
         "tw-animate-css",
         "unbuild",
     ],

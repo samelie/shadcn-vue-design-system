@@ -120,7 +120,7 @@ import "@adddog/shadcn-vue-design-system/styles.css"
 
 ### Component Inventory
 
-**ui/** (18): accordion, button, calendar, checkbox, command, dialog, drawer, dropdown-menu, input, label, popover, range-calendar, switch, table, tags-input, toggle, toggle-group, tooltip
+**ui/ + rad/** (59): accordion, alert, alert-dialog, aspect-ratio, avatar, badge, breadcrumb, button, button-group, calendar, card, carousel, checkbox, collapsible, combobox, command, context-menu, dialog, drawer, dropdown-menu, empty, field, form, hover-card, input, input-group, input-otp, item, kbd, label, menubar, native-select, navigation-menu, number-field, pagination, pin-input, popover, progress, radio-group, range-calendar, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, spinner, stepper, switch, table, tabs, tags-input, textarea, toggle, toggle-group, tooltip
 
 **custom/**: IconButtonTooltip
 
@@ -133,6 +133,12 @@ import "@adddog/shadcn-vue-design-system/styles.css"
 - `clsx` + `tailwind-merge` - class management
 - `@vueuse/core` - Vue utilities
 - `lucide-vue-next` - icons
+
+**Optional peer deps** (for specific components):
+- `embla-carousel-vue` - carousel
+- `vue-sonner` - sonner (toast notifications)
+- `vee-validate` + `@vee-validate/zod` - form validation
+- `vue-input-otp` - OTP input
 
 ### Conventions
 
