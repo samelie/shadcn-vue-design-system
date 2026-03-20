@@ -23,7 +23,7 @@ function getStyleImports(content: string): string {
 }
 
 export default defineKnipConfig({
-    entry: ["src/main.ts", "src/index.ts"],
+    entry: ["src/eslint/index.ts"],
     project: ["src/**/*.{ts,vue}"],
     ignoreDependencies: ["tailwindcss"],
     compilers: {
@@ -41,16 +41,13 @@ export default defineKnipConfig({
         "@adddog/monorepo-consistency",
         "@adddog/tailwind-theme",
         "@adddog/design-tokens",
-        "@internationalized/date",
         "@tailwindcss/container-queries",
         "@tailwindcss/vite",
         "@vitejs/plugin-vue",
         "tw-animate-css",
         "unbuild",
     ],
-    ignoreBinaries: [
-        "knip",
-    ],
+    ignoreBinaries: [],
     ignoreUnresolved: [
         "vitest/globals",
     ],
