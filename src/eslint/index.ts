@@ -3,7 +3,7 @@ import rule from "./rules/enforce-rad-imports";
 
 const plugin = {
     meta: { name: "design-system" },
-    rules: { "enforce-rad-imports": rule },
+    rules: { "enforce-rad-imports": rule as unknown as ESLint.RuleModule },
 } satisfies ESLint.Plugin;
 
 export const configs: Linter.Config[] = [
