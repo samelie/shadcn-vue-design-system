@@ -1,10 +1,11 @@
 import type { ESLint, Linter } from "eslint";
 import rule from "./rules/enforce-rad-imports";
 
-const plugin = {
+const plugin: ESLint.Plugin = {
     meta: { name: "design-system" },
-    rules: { "enforce-rad-imports": rule as unknown as ESLint.RuleModule },
-} satisfies ESLint.Plugin;
+    // @ts-expect-error - RuleModule from @typescript-eslint/utils is structurally compatible but nominally mismatched
+    rules: { "enforce-rad-imports": rule },
+};
 
 export const configs: Linter.Config[] = [
     {
