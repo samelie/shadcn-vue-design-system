@@ -18,7 +18,7 @@ For structural frontend work (pages, stores, routing, tests), dispatch `vue-fron
 | shadcn-vue CLI config | `packages/shadcn-vue-design-system/components.json` |
 | Barrel exports | `packages/shadcn-vue-design-system/src/components/index.ts` |
 | Houdini composable | `packages/shadcn-vue-design-system/src/composables/useHoudini.ts` |
-| Full Houdini integration example | `quick-hacks/apps/every3minutes-com/` |
+| Full Houdini integration example | `every3minutes-com/` |
 | Domain component composition example | `park-app/apps/webui/` |
 
 ## App-Side Setup
@@ -45,7 +45,7 @@ resolve: {
 ```
 
 Adjust relative paths based on app location. Reference configs:
-- `quick-hacks/apps/every3minutes-com/vite.config.ts` (4 aliases incl. `~/composables`)
+- `every3minutes-com/vite.config.ts` (4 aliases incl. `~/composables`)
 - `park-app/apps/webui/vite.config.ts` (3 aliases, uses `pkgRootDir` for `@`)
 
 ## Component Workflows
