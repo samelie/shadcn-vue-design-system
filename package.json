@@ -100,7 +100,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "eslint": "^10.1.0",
-    "knip": "^6.0.4",
+    "knip": "^6.0.5",
     "lucide-vue-next": "^0.577.0",
     "reka-ui": "^2.9.2",
     "tailwind-merge": "^3.5.0",
