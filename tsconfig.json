@@ -18,8 +18,7 @@
             "ES2022",
             "DOM",
             "DOM.Iterable",
-            "WebWorker",
-            "esnext.asynciterable"
+            "WebWorker"
         ],
         "skipLibCheck": true,
         "moduleResolution": "bundler",
