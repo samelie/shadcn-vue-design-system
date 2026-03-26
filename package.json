@@ -47,12 +47,12 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "release": "bumpp --yes --no-push --no-tag --release patch",
-    "prepublishOnly": "pnpm run types",
     "prepack": "pnpm run prepublishOnly",
     "types": "vue-tsc --noEmit",
     "test": "vitest --watch=false",
     "knip": "knip",
-    "version:patch": "npm version patch --no-git-tag-version"
+    "version:patch": "npm version patch --no-git-tag-version",
+    "dev": "tsx src/index.ts"
   },
   "author": "Sam Elie <sam@add.dog>",
   "homepage": "https://github.com/samelie/shadcn-vue-design-system#readme",
