@@ -7,7 +7,7 @@ export function createEslintRule<TOptions extends readonly unknown[], TMessageId
     defaultOptions,
     create,
 }: Readonly<RuleWithMetaAndName<TOptions, TMessageIds>>): RuleModule<TMessageIds, TOptions> {
-    const emptyDefaults = [] as TOptions;
+    const emptyDefaults = [] as unknown as TOptions;
     return {
         defaultOptions: defaultOptions ?? emptyDefaults,
         meta,
