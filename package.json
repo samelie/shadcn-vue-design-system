@@ -42,6 +42,7 @@
   ],
   "scripts": {
     "example": "cd example-app && vite",
+    "prepare": "unbuild",
     "build": "unbuild",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
