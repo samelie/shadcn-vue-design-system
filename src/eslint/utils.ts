@@ -7,8 +7,9 @@ export function createEslintRule<TOptions extends readonly unknown[], TMessageId
     defaultOptions,
     create,
 }: Readonly<RuleWithMetaAndName<TOptions, TMessageIds>>): RuleModule<TMessageIds, TOptions> {
+    const emptyDefaults = [] as TOptions;
     return {
-        defaultOptions: defaultOptions ?? ([] as unknown as TOptions),
+        defaultOptions: defaultOptions ?? emptyDefaults,
         meta,
         create: (context: Readonly<RuleContext<TMessageIds, TOptions>>): RuleListener => {
             return create(context, context.options ?? defaultOptions);
