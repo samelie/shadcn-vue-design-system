@@ -88,7 +88,7 @@
   "devDependencies": {
     "@adddog/design-tokens": "workspace:*",
     "@adddog/monorepo-consistency": "workspace:*",
-    "@internationalized/date": "^3.12.0",
+    "@internationalized/date": "^3.12.1",
     "@tailwindcss/container-queries": "^0.1.1",
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/vue-table": "^8.21.3",
