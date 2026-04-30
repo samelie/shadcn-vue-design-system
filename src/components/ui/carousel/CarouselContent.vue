@@ -9,7 +9,6 @@ defineOptions({
 
 const props = defineProps<WithClassAsProps>();
 
-// @ts-expect-error carouselRef is used as template ref but vue-tsc doesn't recognize it
 const { carouselRef, orientation } = useCarousel();
 </script>
 
