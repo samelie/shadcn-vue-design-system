@@ -47,7 +47,7 @@ export default defineKnipConfig({
         "tw-animate-css",
         "unbuild",
     ],
-    ignoreBinaries: [],
+    ignoreBinaries: ["tsx"],
     ignoreUnresolved: [
         "vitest/globals",
     ],
