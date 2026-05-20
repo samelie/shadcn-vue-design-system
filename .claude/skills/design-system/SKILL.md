@@ -50,6 +50,10 @@ Adjust relative paths based on app location. Reference configs:
 
 ## Component Workflows
 
+### Update or check upstream components
+
+Use the `/upstream-sync` skill — it manages the full update pipeline: diff checking, dry-run previews, intelligent merging, and rad/ wrapper adjustments.
+
 ### Add upstream shadcn-vue component
 
 ```bash
