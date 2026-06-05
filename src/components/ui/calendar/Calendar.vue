@@ -21,17 +21,17 @@ const delegatedProps = reactiveOmit(props, "class", "layout", "placeholder");
 
 const placeholder = useVModel(props, "placeholder", emits, {
     passive: true,
-    defaultValue: props.defaultPlaceholder ?? today(getLocalTimeZone()),
+    defaultValue: props.defaultPlaceholder ?? (today(getLocalTimeZone()) as unknown as DateValue),
 }) as Ref<DateValue>;
 
 const formatter = useDateFormatter(props.locale ?? "en");
 
 const yearRange = computed(() => {
     return props.yearRange ?? createYearRange({
-        start: props?.minValue ?? (toRaw(props.placeholder) ?? props.defaultPlaceholder ?? today(getLocalTimeZone()))
+        start: props?.minValue ?? (toRaw(props.placeholder) ?? props.defaultPlaceholder ?? (today(getLocalTimeZone()) as unknown as DateValue))
             .cycle("year", -100),
 
-        end: props?.maxValue ?? (toRaw(props.placeholder) ?? props.defaultPlaceholder ?? today(getLocalTimeZone()))
+        end: props?.maxValue ?? (toRaw(props.placeholder) ?? props.defaultPlaceholder ?? (today(getLocalTimeZone()) as unknown as DateValue))
             .cycle("year", 10),
     });
 });
