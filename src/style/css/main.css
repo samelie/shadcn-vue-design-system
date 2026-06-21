@@ -7,3 +7,43 @@
 
 /* Design system specific: Houdini fallbacks */
 @import "../houdini/fallbacks.css";
+
+/**
+ * vaul (vaul-vue) drawer positioning — purge-proof.
+ *
+ * vaul portals the drawer + overlay to <body>, so (a) component-scoped styles
+ * don't reach them, and (b) the Tailwind position utilities they rely on
+ * (`fixed`, `inset-x-0`, `inset-0`, `bottom-0`) live ONLY in this package's
+ * DrawerContent/DrawerOverlay source. A consumer whose Tailwind content scan
+ * misses our `src` purges those utilities, leaving the drawer `position:static`
+ * — it drops into normal flow and renders off-screen (no peek tab visible).
+ *
+ * Fixed-positioning is intrinsic to how a vaul drawer works, so pin it here as
+ * plain CSS (keyed off our own `data-slot` contract) for every consumer. The
+ * element's own inline transform still handles the snap offset.
+ */
+[data-slot="drawer-content"] {
+    position: fixed;
+    z-index: 50;
+}
+[data-slot="drawer-content"][data-vaul-drawer-direction="bottom"] {
+    inset-inline: 0;
+    bottom: 0;
+}
+[data-slot="drawer-content"][data-vaul-drawer-direction="top"] {
+    inset-inline: 0;
+    top: 0;
+}
+[data-slot="drawer-content"][data-vaul-drawer-direction="left"] {
+    inset-block: 0;
+    left: 0;
+}
+[data-slot="drawer-content"][data-vaul-drawer-direction="right"] {
+    inset-block: 0;
+    right: 0;
+}
+[data-slot="drawer-overlay"] {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+}
