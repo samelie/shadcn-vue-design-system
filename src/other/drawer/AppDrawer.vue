@@ -139,7 +139,6 @@ const contentMaxHeight = computed(() => {
     const snap = activeSnap.value ?? props.defaultSnapPoint;
     const availableHeight = `calc(${snap * 100}vh - ${CHROME_HEIGHT}px)`;
 
-    console.warn("[AppDrawer] Content max-height:", availableHeight, "for snap:", snap);
     return availableHeight;
 });
 
@@ -174,30 +173,15 @@ const isExpanded = computed(() => {
 
 onMounted(() => {
     isOpen.value = true;
-    const snap = activeSnap.value ?? props.defaultSnapPoint;
-    console.warn("[AppDrawer] Mounted at snap:", snap, `(${snap * 100}% of screen height)`);
 });
 
 // Watch for snap point changes and notify parent
 // Note: activeSnap is bound via v-model, so vaul-vue updates it automatically
 watch(activeSnap, newSnap => {
     if (newSnap !== undefined) {
-        console.warn("[AppDrawer] Snapped to:", newSnap, `(${newSnap * 100}% of screen height)`);
         emit("snapChange", newSnap);
     }
 });
-
-// Debug state
-watch([isOpen, activeSnap], ([open, snap]) => {
-    const snapVal = snap ?? props.defaultSnapPoint;
-    console.warn("[AppDrawer] State:", {
-        open,
-        snap: snapVal,
-        snapPercentage: `${snapVal * 100}%`,
-        snapPoints: props.snapPoints.map(s => `${s * 100}%`),
-        contentMaxHeight: contentMaxHeight.value,
-    });
-}, { immediate: true });
 
 // Public API for parent components
 defineExpose({
@@ -314,11 +298,5 @@ defineExpose({
 /* Ensure drawer is always visible (never fully hidden) */
 :deep([data-vaul-drawer-direction="bottom"]) {
     bottom: 0 !important;
-}
-
-/* DEBUG: Make drawer super visible */
-.drawer-with-tab {
-    border: 3px solid red !important;
-    box-shadow: 0 -4px 20px rgba(255, 0, 0, 0.5) !important;
 }
 </style>
