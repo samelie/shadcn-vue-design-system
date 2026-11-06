@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useWindowSize } from "@vueuse/core";
 import { ChevronUp } from "lucide-vue-next";
 import { computed, onMounted, ref, watch } from "vue";
 import Drawer from "../../components/ui/drawer/Drawer.vue";
@@ -126,9 +127,40 @@ const emit = defineEmits<{
     close: [];
 }>();
 
+// drag handle above the tab: mt-4 + h-2 in DrawerContent
+const HANDLE_HEIGHT_PX = 24;
+
+const { height: viewportHeight } = useWindowSize();
+const tabHeightPx = computed(() => Number.parseFloat(props.tabHeight) || 50);
+
+// a fractional peek is a different pixel height on every screen; on short screens it can be
+// smaller than handle + tab and the tab slides below the fold, so the peek is floored to fit them
+const effectiveSnapPoints = computed(() => {
+    const minPeek = viewportHeight.value > 0 ? Math.min(1, (HANDLE_HEIGHT_PX + tabHeightPx.value) / viewportHeight.value) : 0;
+    return props.snapPoints.map((snap, index) => (index === 0 ? Math.max(snap, minPeek) : snap));
+});
+const peekSnap = computed(() => effectiveSnapPoints.value[0]);
+
+const toEffectiveSnap = (snap: number): number => {
+    const index = props.snapPoints.indexOf(snap);
+    return index >= 0 ? (effectiveSnapPoints.value[index] ?? snap) : snap;
+};
+
 // State: drawer is always open, just at different snap heights
 const isOpen = ref(true);
-const activeSnap = ref<number | undefined>(props.defaultSnapPoint);
+const activeSnap = ref<number | undefined>(toEffectiveSnap(props.defaultSnapPoint));
+
+// a drawer resting at the peek follows the peek when a resize moves it
+watch(peekSnap, (next, previous) => {
+    if (activeSnap.value === previous) activeSnap.value = next;
+});
+
+// dismissible=false only covers vaul's pointer-down and escape paths. reka still dismisses a
+// non-modal layer on focus outside (focusing any input on the page), and nothing reopens this
+// always-open drawer, so every outside interaction is refused here.
+const keepOpen = (event: Event): void => {
+    event.preventDefault();
+};
 
 // Compute available height for scrollable content based on current snap position
 // This ensures content can scroll when drawer is partially visible
@@ -136,7 +168,7 @@ const contentMaxHeight = computed(() => {
     // activeSnap is the % of screen the drawer occupies
     // We need to subtract space for: handle (~20px) + header + padding + tab area
     const CHROME_HEIGHT = 120; // Approximate height of handle + header + padding
-    const snap = activeSnap.value ?? props.defaultSnapPoint;
+    const snap = activeSnap.value ?? toEffectiveSnap(props.defaultSnapPoint);
     const availableHeight = `calc(${snap * 100}vh - ${CHROME_HEIGHT}px)`;
 
     return availableHeight;
@@ -149,7 +181,19 @@ const drawerStyle = computed(() => ({
 
 // Compute drawer positioning class using Tailwind justify-self
 const drawerClass = computed(() => {
-    const classes = ["drawer-with-tab", "h-full", "max-h-[97%]"];
+    // vaul offsets a snap point by innerHeight × (1 − snap) from the drawer's resting position, so
+    // the visible height equals snap × innerHeight only for a full-viewport drawer. DrawerContent
+    // caps top/bottom drawers at 80vh with a data-variant class (more specific than a bare max-h);
+    // the same variants here make cn() drop that cap instead of losing to it.
+    const classes = [
+        "drawer-with-tab",
+        "h-full",
+        "max-h-[97%]",
+        "data-[vaul-drawer-direction=bottom]:max-h-none",
+        "data-[vaul-drawer-direction=bottom]:mt-0",
+        "data-[vaul-drawer-direction=top]:max-h-none",
+        "data-[vaul-drawer-direction=top]:mb-0",
+    ];
 
     // Add justify-self for horizontal positioning (bottom/top drawers only)
     if (props.side && (props.direction === "bottom" || props.direction === "top")) {
@@ -166,8 +210,8 @@ const drawerClass = computed(() => {
 
 // Safe computed for checking if expanded beyond second snap point
 const isExpanded = computed(() => {
-    const snap = activeSnap.value ?? props.defaultSnapPoint;
-    const secondSnap = props.snapPoints[1] ?? props.defaultSnapPoint;
+    const snap = activeSnap.value ?? toEffectiveSnap(props.defaultSnapPoint);
+    const secondSnap = effectiveSnapPoints.value[1] ?? toEffectiveSnap(props.defaultSnapPoint);
     return snap > secondSnap;
 });
 
@@ -187,39 +231,42 @@ watch(activeSnap, newSnap => {
 defineExpose({
     /** Jump to specific snap point by index */
     snapTo: (index: number) => {
-        const snapPoint = props.snapPoints[index];
-        if (index >= 0 && index < props.snapPoints.length && snapPoint !== undefined) {
+        const snapPoint = effectiveSnapPoints.value[index];
+        if (index >= 0 && snapPoint !== undefined) {
             activeSnap.value = snapPoint;
         }
     },
     /** Expand to largest snap point (usually full screen) */
     expand: () => {
-        const snapPoint = props.snapPoints.at(-1);
+        const snapPoint = effectiveSnapPoints.value.at(-1);
         if (snapPoint !== undefined) activeSnap.value = snapPoint;
     },
     /** Collapse to smallest snap point (usually peek/tab view) */
     collapse: () => {
-        const snapPoint = props.snapPoints[0];
+        const snapPoint = peekSnap.value;
         if (snapPoint !== undefined) activeSnap.value = snapPoint;
     },
     /** Get current snap point value */
-    getCurrentSnap: () => activeSnap.value ?? props.defaultSnapPoint,
+    getCurrentSnap: () => activeSnap.value ?? toEffectiveSnap(props.defaultSnapPoint),
     /** Get current snap point as percentage string */
-    getCurrentSnapPercentage: () => `${(activeSnap.value ?? props.defaultSnapPoint) * 100}%`,
+    getCurrentSnapPercentage: () => `${(activeSnap.value ?? toEffectiveSnap(props.defaultSnapPoint)) * 100}%`,
 });
 </script>
 
 <template>
     <Drawer
-        v-model:open="isOpen" v-model:active-snap-point="activeSnap" :snap-points="snapPoints" :modal="modal"
+        v-model:open="isOpen" v-model:active-snap-point="activeSnap" :snap-points="effectiveSnapPoints" :modal="modal"
         :should-scale-background="shouldScaleBackground" :direction="direction" :dismissible="false"
         :scroll-lock-timeout="scrollLockTimeout" :handle-only="handleOnly"
     >
-        <DrawerContent :class="drawerClass" :style="drawerStyle" :aria-describedby="description ? undefined : 'undefined'">
+        <DrawerContent
+            :class="drawerClass" :style="drawerStyle" :aria-describedby="description ? undefined : 'undefined'"
+            @interact-outside="keepOpen"
+        >
             <!-- Drag handle bar (automatically positioned by vaul) -->
 
             <!-- Always include title for accessibility (visually hidden when collapsed) -->
-            <DrawerHeader :class="activeSnap === snapPoints[0] ? 'sr-only' : 'text-left'">
+            <DrawerHeader :class="activeSnap === peekSnap ? 'sr-only' : 'text-left'">
                 <DrawerTitle>
                     <slot name="title">
                         {{ title }}
@@ -235,7 +282,7 @@ defineExpose({
 
             <!-- Tab content - visible at smallest snap point -->
             <div
-                v-if="activeSnap === snapPoints[0]"
+                v-if="activeSnap === peekSnap"
                 class="flex items-center justify-center gap-2 px-4 bg-background border-t border-border"
                 :style="{ height: tabHeight }"
             >
@@ -246,10 +293,10 @@ defineExpose({
             </div>
 
             <!-- Full drawer content - visible at larger snap points -->
-            <template v-if="activeSnap !== snapPoints[0]">
+            <template v-if="activeSnap !== peekSnap">
                 <!-- Scrollable content area with dynamic height based on snap position -->
                 <div class="flex-1 overflow-y-auto px-4 pb-4" :style="{ maxHeight: contentMaxHeight }">
-                    <slot :snap="activeSnap ?? defaultSnapPoint" :is-expanded="isExpanded" />
+                    <slot :snap="activeSnap ?? peekSnap" :is-expanded="isExpanded" />
                 </div>
 
                 <!-- Optional footer -->
