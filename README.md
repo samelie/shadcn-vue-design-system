@@ -122,7 +122,26 @@ import "@adddog/shadcn-vue-design-system/styles.css"
 
 **ui/ + rad/** (59): accordion, alert, alert-dialog, aspect-ratio, avatar, badge, breadcrumb, button, button-group, calendar, card, carousel, checkbox, collapsible, combobox, command, context-menu, dialog, drawer, dropdown-menu, empty, field, form, hover-card, input, input-group, input-otp, item, kbd, label, menubar, native-select, navigation-menu, number-field, pagination, pin-input, popover, progress, radio-group, range-calendar, resizable, scroll-area, select, separator, sheet, sidebar, skeleton, slider, sonner, spinner, stepper, switch, table, tabs, tags-input, textarea, toggle, toggle-group, tooltip
 
-**custom/**: IconButtonTooltip
+**custom/**: ChartPlaceholder, IconButtonTooltip, MetricTile, StatusBadge
+
+### Generic display primitives
+Deep-import each component and its types from the declaring SFC. No barrel import is required:
+
+```typescript
+import ChartPlaceholder from "@adddog/shadcn-vue-design-system/components/custom/ChartPlaceholder.vue"
+import MetricTile, { type MetricTone } from "@adddog/shadcn-vue-design-system/components/custom/MetricTile.vue"
+import StatusBadge, { type StatusTone } from "@adddog/shadcn-vue-design-system/components/custom/StatusBadge.vue"
+```
+
+| Component | Props | Behavior |
+|-----------|-------|----------|
+| `StatusBadge` | required `tone: StatusTone`; optional `class` | Default slot supplies label; outline badge base with `success`, `warning`, `destructive` or `muted` semantic tokens; root `data-slot="status-badge"` |
+| `MetricTile` | required `label: string`, `value: string \| null`; optional `unit`, `tone`, `emptyText`, `class` | `tone: MetricTone` defaults to `default`; also accepts `warning`, `destructive`, `muted`. Null displays `emptyText` (default `—`) and mutes root; string values use tabular numerals; root `data-slot="metric-tile"` |
+| `ChartPlaceholder` | required `title`; optional `description`, `class` | Empty primitives with `h-40` default height; root `data-slot="chart-placeholder"`; caller class can override height |
+
+All three merge caller classes with `cn()` and forward root attributes. Labels, values and descriptions render as text. Consumers choose state and formatting; these components contain no domain thresholds or history data.
+
+`pnpm -F "@adddog/shadcn-vue-design-system" test` exercises actual SFC rendering through the existing Vue/Vite dependencies, including tokens, null values, escaped text, attributes and class overrides. The test server uses middleware mode and closes after the suite; no browser or extra test config is required.
 
 **houdini/**: ConfettiBackground
 
